@@ -1,0 +1,38 @@
+USE SQLPractice
+
+INSERT INTO stock
+("product", "brand", "subcategory", "category","family", "units", "quantity_available") 
+VALUES 
+('tomatoes', 'Mr Red', NULL , 'vegetables', 'food', 'Kilos', 280),
+('lettuce', NULL, 'Leaf vegetables',NULL, 'food', 'Kilos', 280),
+('bananas', 'Big Brasil' , NULL , 'vegetables', 'food', 'Kilos', NULL),
+('hamburger', 'MaxBurg' , 'cow meat' , 'meat', 'food', 'Box', 245),
+('hamburger', 'RoyalBurg' , 'cow meat' , 'meat', 'food', 'Box', 125),
+('hamburger', 'SuperBurg' ,NULL , NULL, NULL, 'Box', 200)
+
+SELECT * 
+FROM stock
+
+--Replace Nulls
+SELECT 
+product
+, COALESCE(brand, 'No Brand') as brand
+, COALESCE(subcategory, 'No Subcategory') as subcategory
+, COALESCE(subcategory, 'No Category') as category
+, COALESCE(family, 'No Category') as family
+FROM stock
+
+--COALESCE for concatenate
+
+SELECT 
+CONCAT(product, ', brand:', COALESCE(brand,'--')) as product_brand
+FROM stock
+
+--COALESCE with multiple arguments
+
+SELECT 
+CONCAT(product, '- ', COALESCE(subcategory, category,family, 'no product description'))
+FROM stock
+
+
+
