@@ -1,5 +1,8 @@
 USE SQLPractice
 
+COALESCE:--COALESCE (standard will work in other platform)
+-- Need to replace with the same data type as the column type. Can't replace NULL with 123 like ISNULL is datatype of column is not INT
+
 INSERT INTO stock
 ("product", "brand", "subcategory", "category","family", "units", "quantity_available") 
 VALUES 
